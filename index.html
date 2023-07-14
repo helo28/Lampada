@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lâmpada Dinâmica</h1>
+
+    <!-- ADICIONANDO  AS IMAGENS E DANDO FUNÇÕES AO MOUSE PARA EFETUAR NA IMAGEM-->
+    <!--FUNÇÃO DE PASSAR O MOUSE EM CIMA, DE TIRAR O MOUSE DA IMAGEM E O DE CLICAR, CADA UM FAZENDO UMA AÇÃO DIFERENTE-->
+    <!--<img src="img/OFF.jpg" id="luz" onmouseover="acender()" onmouseout="apagar()" onclick="quebrar()"> -->
+
+    <!--
+    <script>
+        let lampada = document.querySelector('#luz') /
+        function acender() {
+
+            // SRC SERVE PARA PEGAR A IMAGEM DO ID LUZ
+            lampada.src = "img/ON.jpg" // ACENDE A LÂMPADA
+        }
+
+        function apagar() {
+            lampada.src = "img/OFF.jpg" // APAGA A LÂMPADA 
+        }
+
+        function quebrar() {
+            lampada.src = "img/QUEBRADA.jpg" // QUEBRA A LÂMPADA
+        }
+    </script>
+    -->
+
+
+    <!-- ADICIONANDO  AS IMAGENS E DANDO FUNÇÕES AO MOUSE PARA EFETUAR NA IMAGEM-->
+    <!--FUNÇÃO DE PASSAR O MOUSE EM CIMA, DE TIRAR O MOUSE DA IMAGEM E O DE CLICAR, CADA UM FAZENDO UMA AÇÃO DIFERENTE-->
+    <!-- <img src="img/OFF.jpg" id="luz"> 
+ 
+    <script>
+        let lampada = document.querySelector('#luz') // # PUXA O ID
+    
+        // AQUI ESTÁ FAZENDO USO DO EVENTLISTENER PARA SUBSTITUIR O MOUSECLICK
+        lampada.addEventListener('mouseover', acender) 
+        lampada.addEventListener('mouseout', apagar) 
+        lampada.addEventListener('click', quebrar) 
+
+        function acender() {
+
+            // SRC SERVE PARA PEGAR A IMAGEM DO ID LUZ
+            lampada.src = "img/ON.jpg" // ACENDE A LÂMPADA
+        }
+
+        function apagar() {
+            lampada.src = "img/OFF.jpg" // APAGA A LÂMPADA 
+        }
+
+        function quebrar() {
+            lampada.src = "img/QUEBRADA.jpg" // QUEBRA A LÂMPADA
+        }
+    </script>
+-->
+
+    <img src="img/OFF.jpg" id="luz">
+
+    <button id="btnON" onclick="acender">ACENDER!!!</button>
+    <button id="btnOFF" onclick="apagar">APAGAR!!!</button>
+    <button id="btnQuebrar" onclick="quebrar">QUEBRAR!!!</button>
+    <button id="btnTrocar" onclick="trocar">TROCAR!!!</button>
+    <button id="btnPisc" onclick="piscar">PISCAR!!!</button>
+    
+    
+
+    <script>
+        let lampada = document.querySelector('#luz') // # PUXA O ID
+  
+        // ÁREA DO BOTÃO ACENDER
+        let btnON = document.getElementById('btnON');
+        btnON.addEventListener('click', acender);
+        // ÁREA DO BOTÃO APAGAR
+        let btnOFF = document.getElementById('btnOFF');
+        btnOFF.addEventListener('click', apagar);
+        // ÁREA DO BOTÃO QUEBRAR
+        let btnQuebrar = document.getElementById('btnQuebrar');
+        btnQuebrar.addEventListener('click', quebrar);
+        // ÁREA DO BOTÃO TROCAR
+        let btnTrocar = document.getElementById('btnTrocar');
+        btnTrocar.addEventListener('click', trocar);
+        // ÁREA DO BOTÃO PISCAR
+        let btnPisc = document.getElementById('btnPisc');
+        btnPisc.addEventListener('click', piscar);
+        
+
+        // FUNÇÃO ACENDE A LÂMPADA
+        function acender() {
+            if (lampada.getAttribute("src") == "img/QUEBRADA.jpg"){
+                alert("A lâmpada está QUEBRADA, troque para acender!!!")
+            }else {
+                // SRC SERVE PARA PEGAR A IMAGEM DO ID LUZ
+                lampada.src = "img/ON.jpg" // ACENDE A LÂMPADA
+            }
+        }
+
+        // FUNÇÃO APAGA A LÂMPADA
+        function apagar() {
+            if (lampada.getAttribute("src") == "img/QUEBRADA.jpg"){
+                alert("A lâmpada está QUEBRADA, troque para apagar!!!")
+            }else {
+                // SRC SERVE PARA PEGAR A IMAGEM DO ID LUZ
+                lampada.src = "img/OFF.jpg" // ACENDE A LÂMPADA
+            }
+        }
+
+        // FUNÇÃO QUEBRA A LÂMPADA
+        function quebrar() {
+            if (lampada.getAttribute("src") == "img/QUEBRADA.jpg"){
+                alert("A lâmpada já está quebrada!!! Troque e quebre de novo")
+            }else {
+                // SRC SERVE PARA PEGAR A IMAGEM DO ID LUZ
+                lampada.src = "img/QUEBRADA.jpg" // ACENDE A LÂMPADA
+            }
+        }     
+
+        // FUNÇÃO TROCA A LÂMPADA
+        function trocar() {
+            if (lampada.getAttribute("src") == "img/QUEBRADA.jpg"){
+                // SRC SERVE PARA PEGAR A IMAGEM DO ID LUZ
+                lampada.src = "img/OFF.jpg" // ACENDE A LÂMPADA
+            }else {
+                alert("Não é possivel trocar!!! A lâmpada NÃO está quebrada ")
+            }
+        }
+
+        //FUNÇÃO PISCA A LÂMPADA 
+        function piscar() {
+            if (lampada.getAttribute("src") == "img/QUEBRADA.jpg"){
+                alert("NÃO posso Piscar!!! A lâmpada está QUEBRADA!!!")
+            }else {
+
+                let intervalo = 0;
+                let contador = 0;
+
+                // UTILIZANDO O WHILE PARA SER UM CONTADOR
+                while(contador <10){
+                    intervalo +=300; // 0.3 SEGUNDOS
+                    setTimeout("document.querySelector('#luz').src='img/ON.jpg';", intervalo); // COLOCANDO A IMAGEM
+                    // PEGA O VALOR E USA COMO UM CONTADOR
+                    intervalo +=300;
+                    setTimeout("document.querySelector('#luz').src='img/OFF.jpg';", intervalo);
+                    contador++;
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
